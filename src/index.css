@@ -1011,6 +1011,12 @@ kbd {
   stroke-linecap: round;
   opacity: var(--glow);
 }
+.boot-scp-seg {
+  fill: color-mix(in srgb, var(--accent, #c0392b) calc(var(--glow, 1) * 30%), transparent);
+  stroke: color-mix(in srgb, var(--accent, #c0392b) 85%, transparent);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
 
 @media (max-width: 900px) {
   .hud-top { padding: 0 46px; }
