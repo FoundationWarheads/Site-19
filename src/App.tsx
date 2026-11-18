@@ -591,7 +591,8 @@ export default function App() {
         !e.repeat &&
         !e.metaKey &&
         !e.ctrlKey &&
-        !e.altKey
+        !e.altKey &&
+        document.activeElement?.tagName !== 'INPUT'
       ) {
         e.preventDefault()
         const name = cycleVoice()
