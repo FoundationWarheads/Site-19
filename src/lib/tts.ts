@@ -264,6 +264,19 @@ export function cycleVoice(): string {
   return next.name
 }
 
+/** Reset to the top-ranked voice (Daniel / best British male available).
+ *  Clears any saved preference so the scorer picks again from scratch. */
+export function resetVoice(): string {
+  localStorage.removeItem(VOICE_PREF_KEY)
+  cachedVoice = undefined
+  const best = candidateVoices()[0]
+  if (best) {
+    cachedVoice = best
+    return best.name
+  }
+  return 'default'
+}
+
 // Voices load asynchronously in Chrome; the first call usually returns nothing.
 if (typeof speechSynthesis !== 'undefined') {
   speechSynthesis.addEventListener('voiceschanged', () => {

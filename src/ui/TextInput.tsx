@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useStore } from '../store'
-import { cycleVoice, currentVoiceName } from '../lib/tts'
+import { cycleVoice, resetVoice, currentVoiceName } from '../lib/tts'
 
 /**
  * Slim fixed text bar at the bottom of the screen.
@@ -32,6 +32,11 @@ export function TextInput({ onSubmit }: { onSubmit: (text: string) => void }) {
 
   const handleVoc = () => {
     const name = cycleVoice()
+    setVoice(name)
+  }
+
+  const handleReset = () => {
+    const name = resetVoice()
     setVoice(name)
   }
 
@@ -68,6 +73,14 @@ export function TextInput({ onSubmit }: { onSubmit: (text: string) => void }) {
         onClick={handleVoc}
       >
         {vocLabel}
+      </button>
+      <button
+        className="txt-send"
+        style={{ letterSpacing: '0.12em', opacity: 0.5 }}
+        title="Reset to default voice"
+        onClick={handleReset}
+      >
+        RST
       </button>
       <button className="txt-send" onClick={submit} disabled={busy}>
         SEND
