@@ -4,6 +4,7 @@ import { Hud } from './ui/Hud'
 import { Boot } from './ui/Boot'
 import { Ignition } from './ui/Ignition'
 import { Diagnostics } from './ui/Diagnostics'
+import { TextInput } from './ui/TextInput'
 import { useStore } from './store'
 import { startVoice, type Voice, type VoiceMode } from './lib/voice'
 import { createSpeaker, cycleVoice, currentVoiceName } from './lib/tts'
@@ -704,6 +705,7 @@ export default function App() {
       <Boot />
       <Diagnostics />
       <Ignition onStart={() => void powerOn()} />
+      <TextInput onSubmit={(text) => void respond(text)} />
     </>
   )
 }
